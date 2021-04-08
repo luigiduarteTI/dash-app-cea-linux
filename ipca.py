@@ -200,18 +200,18 @@ ipca = [
                 html.Div(dcc.Graph(id='grafico-ipca'), style={'width':'700px','height':'500px','backgroundColor':'blue'}),
                 html.Div([
                     html.Div([
-                            html.Div("0,25%", className="estatistica-variacao",id="variacao-1"),
-                            html.Div("Projeção de Variação Mensal para 2021", className="estatistica-texto",id="texto-variacao-1")
+                            html.Div("3,63%", className="estatistica-variacao",id="variacao-1"),
+                            html.Div("Projeção de Variação Anual para 2021", className="estatistica-texto",id="texto-variacao-1")
                         ],className="item-estatisca"),
                     html.Div([
-                            html.Div("0,25%", className="estatistica-variacao",id="variacao-2"),
-                            html.Div("Projeção de Variação Mensal para 2022", className="estatistica-texto",id="texto-variacao-2")
+                            html.Div("3,07%", className="estatistica-variacao",id="variacao-2"),
+                            html.Div("Projeção de Variação Anual para 2022", className="estatistica-texto",id="texto-variacao-2")
                         ],className="item-estatisca"),
                     html.Div([
-                            html.Div("0,27%", className="estatistica-variacao",id="variacao-3"),
-                            html.Div("Projeção de Variação Mensal para 2023 e Posteriores", className="estatistica-texto",id="texto-variacao-3")
+                            html.Div("3,23%", className="estatistica-variacao",id="variacao-3"),
+                            html.Div("Projeção de Variação Anual para 2023 e Posteriores", className="estatistica-texto",id="texto-variacao-3")
                         ],className="item-estatisca")
-                    ],className="container-estatisticas"),
+                    ],className="container-estatisticas", id="container-estatisticas"),
                 ], className="container-grafico-estatisticas-ipca"),
             
         ],className="container-ipca"),

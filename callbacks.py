@@ -469,7 +469,7 @@ def update_grafico_tabela_ipca(n_mes,n_ano, start_date, end_date):
     textoVariacao2021 = ''
     textoVariacao2022 = ''
     textoVariacao2023 = ''
-    
+
     if trigger_id == 'ano-ipca':
         mes_ano_atual = 'Anual'
         displayDatePicker = {'display': 'none'}
@@ -496,16 +496,34 @@ def update_grafico_tabela_ipca(n_mes,n_ano, start_date, end_date):
         mes_ano_atual = 'Mensal'
         displayDatePicker = {'display': 'block'}
         displayRangeSlider = 'd-block slider-ipca'
+        n = 0
+        var = 0
+        ipcaAnos = []
         for i in ipca:
-            if i['data'] == '01-12-2021':
-                variacao2021 = i['variacao ipca'].replace('.',',')
-            if  i['data'] == '01-12-2022':
-                variacao2022 = i['variacao ipca'].replace('.',',')
-            if  i['data'] == '01-12-2023':
-                variacao2023 = i['variacao ipca'].replace('.',',')
-        textoVariacao2021 = 'Projeção de Variação ' + mes_ano_atual + ' para 2021'
-        textoVariacao2022 = 'Projeção de Variação ' + mes_ano_atual + ' para 2022'
-        textoVariacao2023 = 'Projeção de Variação ' + mes_ano_atual + ' para 2023 e Posteriores'
+            if '01-12' in i['data']:
+                if i['data'] == '01-12-2019':
+                    n = i['ipca']
+                    ipcaAnos.append('4,31%')
+                else:
+                    var = ((i['ipca'] / n) - 1) * 100
+                    ipcaAnos.append(str(round(var,2)) + '%')
+                    n = i['ipca']
+        variacao2021 = ipcaAnos[2].replace('.',',')
+        variacao2022 = ipcaAnos[3].replace('.',',')
+        variacao2023 = ipcaAnos[4].replace('.',',')
+        textoVariacao2021 = 'Projeção de Variação Anual para 2021'
+        textoVariacao2022 = 'Projeção de Variação Anual para 2022'
+        textoVariacao2023 = 'Projeção de Variação Anual para 2023 e Posteriores'
+        #for i in ipca:
+        #    if i['data'] == '01-12-2021':
+        #        variacao2021 = i['variacao ipca'].replace('.',',')
+        #    if  i['data'] == '01-12-2022':
+        #        variacao2022 = i['variacao ipca'].replace('.',',')
+        #    if  i['data'] == '01-12-2023':
+        #        variacao2023 = i['variacao ipca'].replace('.',',')
+        #textoVariacao2021 = 'Projeção de Variação ' + mes_ano_atual + ' para 2021'
+        #textoVariacao2022 = 'Projeção de Variação ' + mes_ano_atual + ' para 2022'
+        #textoVariacao2023 = 'Projeção de Variação ' + mes_ano_atual + ' para 2023 e Posteriores'
                  
     titulo_pagina = 'IPCA ' + mes_ano_atual + ' Aplicado na Projeção dos Custos'
     fig = ip.gera_grafico_ipca(ipca,start_date,end_date,mes_ano_atual)    
